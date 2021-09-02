@@ -1,22 +1,31 @@
-const lastIndexOf = (array, value) => {
-  let lastOcurr;
-  if (array.length <= 0) {
-    return -1;
+// loopyLighthouse 1
+for (let i = 100; i <= 200; i++) {
+test dual conditional first, otherwise it will never pass
+  if (i % 3 === 0 && i % 4 === 0) {
+    console.log('LoopyLighthouse');
+  } else if (i % 4 === 0) {
+    console.log('Lighthouse');
+  } else if (i % 3 === 0) {
+    console.log('Loopy');
   } else {
-    // loop backwards so we don't have to deal with duplicates
-    for (let i = array.length - 1; i >= 0; i--) {
-      if (array[i] === value) {
-        return (lastOcurr = i);
-      }
-    }
-    if (array[0] !== value) {
-      return -1;
+    console.log(i);
+  }
+}
+
+// loopyLighthouse 2
+const loopyLighthouse = (range, multiples, words) => {
+  for (let i = range[0]; i <= range[1]; i++) {
+    // test dual conditional first, otherwise it will never pass
+    if (i % multiples[0] === 0 && i % multiples[1] === 0) {
+      console.log(words[0] + words[1]);
+    } else if (i % multiples[1] === 0) {
+      console.log(words[1]);
+    } else if (i % multiples[0] === 0) {
+      console.log(words[0]);
+    } else {
+      console.log(i);
     }
   }
 };
 
-console.log(lastIndexOf([0, 1, 4, 1, 2], 1), '=?', 3);
-console.log(lastIndexOf([0, 1, 4, 1, 2], 2), '=?', 4);
-console.log(lastIndexOf([0, 1, 4, 1, 2], 3), '=?', -1);
-console.log(lastIndexOf([5, 5, 5], 5), '=?', 2);
-console.log(lastIndexOf([], 3), '=?', -1);
+loopyLighthouse([15, 90], [2, 5], ['Batty', 'Beacon']);
